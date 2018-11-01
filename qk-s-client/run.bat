@@ -1,0 +1,2 @@
+javac StudentClient.java
+java StudentClient

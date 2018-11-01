@@ -1,0 +1,2 @@
+javac InstructorClient.java
+java InstructorClient

@@ -1,6 +1,6 @@
 public class StudentClient
 {
-	public StudentClient
+	public StudentClient()
 	{
 		new LogInFrame();
 	}

@@ -7,4 +7,4 @@ Copyright (c) 2018 Nicholas Leonard, Nathan Brown, and Christian Westbrook.
 
 2. LICENSE 
 
-This application is licensed as open-source under the MIT license. Under this license anyone may use, modify, merge, distribute, sublicense, and/or sell copies of this web system, provided that the same license is included with any and all copies or substantial portions of the system.
+This application is licensed as open-source under the MIT license. Under this license anyone may use, modify, merge, distribute, sublicense, and/or sell copies of this web system, provided that the same license is included with any and all copies or substantial portions of the system. The license can be found in the root directory of the repository.

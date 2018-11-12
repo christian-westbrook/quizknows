@@ -1,22 +1,25 @@
+package sclient.gui;
+
 import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+/**
+ *	Swing GUI that allows a user to connect to a QuizKnows session.
+ */
 public class LogInFrame extends JFrame
 {
+	// Width and height of the device
 	private int frameWidth = 800;
 	private int frameHeight = 480;
 
+	// Swing objects
 	private JLabel 			userLabel;
 	private JTextField 		userField;
-	private JLabel 			passLabel;
-	private JPasswordField 	passField;
 	private JButton 		loginButton;
-
 
 	private JPanel loginPanel;
 
@@ -31,8 +34,6 @@ public class LogInFrame extends JFrame
 		loginPanel = new JPanel();
 		loginPanel.add(userLabel);
 		loginPanel.add(userField);
-		loginPanel.add(passLabel);
-		loginPanel.add(passField);
 		loginPanel.add(loginButton);
 
 		// Add loginPanel to frame
@@ -56,7 +57,7 @@ public class LogInFrame extends JFrame
 	{
 		public void actionEvent(ActionEvent e)
 		{
-			
+			new StudentClient();
 		}
 	}
 }

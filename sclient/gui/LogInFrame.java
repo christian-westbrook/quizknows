@@ -1,6 +1,8 @@
 package sclient.gui;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,26 +19,43 @@ public class LogInFrame extends JFrame
 	private int frameHeight = 480;
 
 	// Swing objects
-	private JLabel 			userLabel;
-	private JTextField 		userField;
-	private JButton 		loginButton;
+	private JLabel			emailLabel;
+	private JTextField		emailField;
+	private JLabel 			fnameLabel;
+	private JTextField 		fnameField;
+	private JLabel			lnameLabel;
+	private JTextField		lnameField;
+	private JLabel			sessionKeyLabel;
+	private JTextField		sessionKeyField;
+	private JButton 		connectButton;
 
-	private JPanel loginPanel;
+	private JPanel 			loginPanel;
 
 	public LogInFrame()
 	{
-		userLabel 	= new JLabel("Enter your name");
-		userField 	= new JTextField(10);
-		loginButton = new JButton("Log In");
-		loginButton.addActionEventListener(new LoginButtonListener());
+		// Create swing objects
+		fnameLabel		= new JLabel("First Name");
+		fnameField		= new JTextField(10);
+		lnameLabel		= new JLabel("Last Name");
+		lnameField		= new JTextField(10);
+		emailLabel 		= new JLabel("University Email");
+		emailField 		= new JTextField(10);
+		sessionKeyLabel	= new JLabel("Session Key");
+		sessionKeyField	= new JTextField(10);
+		connectButton 	= new JButton("Connect");
+		connectButton.addActionListener(new ConnectButtonListener());
 
 		// Create loginPanel
 		loginPanel = new JPanel();
-		loginPanel.add(userLabel);
-		loginPanel.add(userField);
-		loginPanel.add(loginButton);
-
-		// Add loginPanel to frame
+		loginPanel.add(fnameLabel);
+		loginPanel.add(fnameField);
+		loginPanel.add(lnameLabel);
+		loginPanel.add(lnameField);
+		loginPanel.add(emailLabel);
+		loginPanel.add(emailField);
+		loginPanel.add(sessionKeyLabel);
+		loginPanel.add(sessionKeyField);
+		loginPanel.add(connectButton);
 		this.add(loginPanel);
 
 		// Configure frame
@@ -53,11 +72,11 @@ public class LogInFrame extends JFrame
 		this.setVisible(true);
 	}
 
-	private inner class LoginButtonListener implements EventListener
+	private class ConnectButtonListener implements ActionListener
 	{
-		public void actionEvent(ActionEvent e)
+		public void actionPerformed(ActionEvent e)
 		{
-			new StudentClient();
+			new QuizFrame(fnameField.getText(), lnameField.getText(), emailField.getText(), sessionKeyField.getText());
 		}
 	}
 }

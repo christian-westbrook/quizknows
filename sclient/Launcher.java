@@ -1,5 +1,6 @@
 package sclient;
 
+import java.io.IOException;
 import sclient.gui.LogInFrame;
 
 public class Launcher

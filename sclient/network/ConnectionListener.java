@@ -47,14 +47,15 @@ public class ConnectionListener implements Runnable
 				else if(message[0].equals("1"))
 				{
 					JOptionPane.showMessageDialog(null, "Invalid session key.");
-					new LogInFrame();
 					frame.setVisible(false);
+					new LogInFrame();
 				}
 				// Session is now active
 				else if(message[0].equals("2"))
 				{
 					frame.setActive(true);
-					frame.setLabel(message[1]);
+					if(message.length > 1)
+						frame.setLabel(message[1]);
 					frame.setIcon(frame.activeIcon);
 				}
 				// Session is now inactive

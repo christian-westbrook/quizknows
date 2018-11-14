@@ -11,7 +11,7 @@ public class Connection
 {
 	// Connection variables
 	private Socket socket;
-	private String IP 	= "74.117.171.114";
+	private String IP 	= "127.0.0.1";
 	private int port	= 6501;
 
 	// Session variables
@@ -55,14 +55,14 @@ public class Connection
 	public void connectToSession()
 	{
 		// Connect to open session
-		outServer.write("0," + frame.getSessionKey() + "," + frame.getEmail()
-					+ "," + frame.getFname() + "," + frame.getLname() + "\n");
+		outServer.println("0," + frame.getSessionKey() + "," + frame.getEmail()
+					+ "," + frame.getFname() + "," + frame.getLname());
 	}
 
 	public void buzz()
 	{
 		// Buzz in
-		outServer.write("1");
+		outServer.println("1");
 	}
 
 	public void closeConnection()

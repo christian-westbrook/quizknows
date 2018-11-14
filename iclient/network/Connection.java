@@ -10,13 +10,14 @@ public class Connection
 {
     // Connection variables
     private Socket socket;
-    private String IP = "74.117.171.114";
+    private String IP = "127.0.0.1";
     private int port = 6500;
 
     // Session variables
     private SessionFrame frame;
     private ConnectionListener listener;
     private String sessionKey;
+    private boolean locked;
 
     // Server output
 	PrintWriter outServer;
@@ -26,13 +27,12 @@ public class Connection
         // Set fields
         this.frame = frame;
         this.sessionKey = frame.getSessionKey();
+        locked = false;
 
         try
 		{
 			// Create socket connection
-            System.out.println("Before socket");
 			socket = new Socket(IP, port);
-            System.out.println("After socket");
 			listener = new ConnectionListener(frame, this, socket);
 			listener.start();
 
@@ -55,26 +55,43 @@ public class Connection
 
     public void createSession()
     {
-        outServer.write("0," + sessionKey + "\n");
+        outServer.println("0," + sessionKey);
     }
 
     public void newActiveQuestion(String question)
     {
-        outServer.write("1," + question + "\n");
+        outServer.println("1," + question);
     }
 
     public void rejectAnswer()
     {
-        outServer.write("2\n");
+        locked = false;
+        outServer.println("2");
+        frame.getStudentNameLabel().setText("");
     }
 
     public void acceptAnswer()
     {
-        outServer.write("3\n");
+        outServer.println("3");
+        frame.getStudentNameLabel().setText("");
     }
 
     public void endSession()
     {
-        outServer.write("4\n");
+        outServer.println("4");
+        listener.stop(outServer);
+        System.exit(1);
+    }
+
+    public void lockAnswer()
+    {
+        locked = true;
+        outServer.println("5");
+    }
+
+    // Getters and setters
+    public boolean getLocked()
+    {
+        return locked;
     }
 }

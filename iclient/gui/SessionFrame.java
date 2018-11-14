@@ -1,14 +1,20 @@
 package iclient.gui;
 
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import iclient.data.Student;
 import iclient.network.Connection;
 
 public class SessionFrame extends JFrame
@@ -35,15 +41,17 @@ public class SessionFrame extends JFrame
     private JPanel sessionPanel;
 
     // Session variables
-    String sessionKey;
+    private String sessionKey;
+    private ArrayList<Student> students;
 
     // Connection variables
-	Connection conn;
+	private Connection conn;
 
     public SessionFrame(String sessionKey)
     {
         // Set fields
         this.sessionKey = sessionKey;
+        students = new ArrayList<Student>();
 
         // Create Swing variables
         keyLabel            = new JLabel("Session Key: " + sessionKey);
@@ -64,28 +72,67 @@ public class SessionFrame extends JFrame
         endSessionButton.addActionListener(new EndSessionButtonListener());
 
         // Create session panel
-        sessionPanel = new JPanel();
-        sessionPanel.add(questionLabel);
-        sessionPanel.add(questionField);
-        sessionPanel.add(studentLabel);
-        sessionPanel.add(studentNameLabel);
-        sessionPanel.add(newQuestionButton);
-        sessionPanel.add(acceptAnswerButton);
-        sessionPanel.add(rejectAnswerButton);
-        sessionPanel.add(endSessionButton);
-        this.add(sessionPanel);
+        sessionPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+        c.gridx = 1;
+        c.gridy = 0;
+        sessionPanel.add(questionLabel, c);
+
+        c.gridx = 2;
+        c.gridy = 0;
+        sessionPanel.add(questionField, c);
+
+        c.gridx = 1;
+        c.gridy = 1;
+        c.insets = new Insets(2,0,0,0);
+        sessionPanel.add(studentLabel, c);
+        c.insets = new Insets(0,0,0,0);
+
+        c.gridx = 2;
+        c.gridy = 1;
+        c.insets = new Insets(2,0,0,0);
+        sessionPanel.add(studentNameLabel, c);
+        c.insets = new Insets(0,0,0,0);
+
+        c.gridx = 1;
+        c.gridy = 2;
+        c.insets = new Insets(4,0,0,0);
+        sessionPanel.add(newQuestionButton, c);
+        c.insets = new Insets(0,0,0,0);
+
+        c.gridx = 2;
+        c.gridy = 2;
+        c.insets = new Insets(4,0,0,0);
+        sessionPanel.add(acceptAnswerButton, c);
+        c.insets = new Insets(0,0,0,0);
+
+        c.gridx = 3;
+        c.gridy = 2;
+        c.insets = new Insets(4,0,0,0);
+        sessionPanel.add(rejectAnswerButton, c);
+        c.insets = new Insets(0,0,0,0);
+
+        c.gridx = 4;
+        c.gridy = 2;
+        c.insets = new Insets(4,0,0,0);
+        sessionPanel.add(endSessionButton, c);
+        c.insets = new Insets(0,0,0,0);
+
+        this.add(sessionPanel, BorderLayout.CENTER);
 
         // Configure frame
         this.setMinimumSize(new Dimension(frameWidth, frameHeight));
         this.setMaximumSize(new Dimension(frameWidth, frameHeight));
         this.setPreferredSize(new Dimension(frameWidth, frameHeight));
-        this.setLocationRelativeTo(null);
+        //this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("QuizKnows");
 
         // Display frame
-        this.pack();
+        //this.pack();
         this.setVisible(true);
 
         // Send new session request to the server
@@ -97,6 +144,16 @@ public class SessionFrame extends JFrame
     public String getSessionKey()
     {
         return sessionKey;
+    }
+
+    public JLabel getStudentNameLabel()
+    {
+        return studentNameLabel;
+    }
+
+    public ArrayList<Student> getStudents()
+    {
+        return students;
     }
 
     // Inner classes

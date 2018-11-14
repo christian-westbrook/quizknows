@@ -1,5 +1,9 @@
 package sclient.gui;
 
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,23 +53,69 @@ public class LogInFrame extends JFrame
 		connectButton.addActionListener(new ConnectButtonListener());
 
 		// Create loginPanel
-		loginPanel = new JPanel();
-		loginPanel.add(fnameLabel);
-		loginPanel.add(fnameField);
-		loginPanel.add(lnameLabel);
-		loginPanel.add(lnameField);
-		loginPanel.add(emailLabel);
-		loginPanel.add(emailField);
-		loginPanel.add(sessionKeyLabel);
-		loginPanel.add(sessionKeyField);
-		loginPanel.add(connectButton);
-		this.add(loginPanel);
+		loginPanel = new JPanel(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+		c.gridx = 1;
+		c.gridy = 0;
+		loginPanel.add(fnameLabel, c);
+
+		c.gridx = 2;
+		c.gridy = 0;
+		c.insets = new Insets(0,5,0,0);
+		loginPanel.add(fnameField, c);
+		c.insets = new Insets(0,0,0,0);
+
+		c.gridx = 1;
+		c.gridy = 1;
+		c.insets = new Insets(2,0,0,0);
+		loginPanel.add(lnameLabel, c);
+		c.insets = new Insets(0,0,0,0);
+
+		c.gridx = 2;
+		c.gridy = 1;
+		c.insets = new Insets(2,5,0,0);
+		loginPanel.add(lnameField, c);
+		c.insets = new Insets(0,0,0,0);
+
+		c.gridx = 1;
+		c.gridy = 2;
+		c.insets = new Insets(2,0,0,0);
+		loginPanel.add(emailLabel, c);
+		c.insets = new Insets(0,0,0,0);
+
+		c.gridx = 2;
+		c.gridy = 2;
+		c.insets = new Insets(2,5,0,0);
+		loginPanel.add(emailField, c);
+		c.insets = new Insets(0,0,0,0);
+
+		c.gridx = 1;
+		c.gridy = 3;
+		c.insets = new Insets(2,0,0,0);
+		loginPanel.add(sessionKeyLabel, c);
+		c.insets = new Insets(0,0,0,0);
+
+		c.gridx = 2;
+		c.gridy = 3;
+		c.insets = new Insets(2,5,0,0);
+		loginPanel.add(sessionKeyField, c);
+		c.insets = new Insets(0,0,0,0);
+
+		c.gridx = 1;
+		c.gridy = 4;
+		c.gridwidth = 2;
+		c.insets = new Insets(2,0,0,0);
+		loginPanel.add(connectButton, c);
+		c.insets = new Insets(0,0,0,0);
+		this.add(loginPanel, BorderLayout.CENTER);
 
 		// Configure frame
 		this.setMinimumSize(new Dimension(frameWidth, frameHeight));
 		this.setMaximumSize(new Dimension(frameWidth, frameHeight));
 		this.setPreferredSize(new Dimension(frameWidth, frameHeight));
-		this.setLocationRelativeTo(null);
+		//this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("QuizKnows");
@@ -84,6 +134,7 @@ public class LogInFrame extends JFrame
 		public void actionPerformed(ActionEvent e)
 		{
 			new QuizFrame(fnameField.getText(), lnameField.getText(), emailField.getText(), sessionKeyField.getText());
+			LogInFrame.this.setVisible(false);
 		}
 	}
 }

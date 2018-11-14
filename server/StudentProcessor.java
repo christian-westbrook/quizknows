@@ -28,7 +28,7 @@ public class StudentProcessor implements Runnable
 			this.socket = socket;
 			this.inClient = inClient;
 			outClient = new PrintWriter(socket.getOutputStream(), true);
-			outClient.write("0" + "\n");
+			outClient.println("0");
 
 			sessionID = session.generateID();
 
@@ -74,7 +74,7 @@ public class StudentProcessor implements Runnable
 
 	public void send(String output)
 	{
-		outClient.write(output);
+		outClient.println(output);
 	}
 
 	public void start()

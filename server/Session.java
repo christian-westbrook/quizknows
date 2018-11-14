@@ -14,6 +14,7 @@ public class Session
 
 	public Session(String key)
 	{
+		System.out.println("Session with key " + key + " starting");
 		this.key = key;
 		ID = 0;
 
@@ -55,11 +56,13 @@ public class Session
 
 	public void close()
 	{
-		instructor.stop();
+		System.out.println("Session with key " + key + " stopping");
 
 		for(StudentProcessor student : students)
 		{
 			student.stop();
 		}
+
+		instructor.stop();
 	}
 }

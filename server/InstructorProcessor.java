@@ -50,26 +50,34 @@ public class InstructorProcessor implements Runnable
 				if(message[0].equals("1"))
 				{
 					active = true;
-					send("2," + message[1] + "\n");
+					if(message.length > 1)
+						send("2," + message[1]);
+					else
+						send("2");
 				}
 				// Unlock active question
 				else if(message[0].equals("2"))
 				{
 					locked = false;
-					send("5" + "\n");
+					send("5");
 				}
 				// Question answered. Send inactive signal
 				else if(message[0].equals("3"))
 				{
 					active = false;
 					locked = false;
-					send("3" + "\n");
+					send("3");
 				}
 				// End session
 				else if(message[0].equals("4"))
 				{
-					send("6" + "\n");
+					send("6");
 					session.close();
+				}
+				// Lock answer
+				else if(message[0].equals("5"))
+				{
+					send("4");
 				}
 			}
 			catch(IOException ex)
@@ -91,14 +99,14 @@ public class InstructorProcessor implements Runnable
 	{
 		if(active && !locked)
 		{
-			outClient.write("1," + student.getSessionID() + "\n");
+			outClient.println("1," + student.getSessionID());
 			locked = true;
 		}
 	}
 
 	public void addStudent(String fname, String lname, String email, String sessionID)
 	{
-		outClient.write("0," + fname + "," + lname + "," + email + "," + sessionID + "\n");
+		outClient.println("0," + fname + "," + lname + "," + email + "," + sessionID);
 	}
 
 	public void start()

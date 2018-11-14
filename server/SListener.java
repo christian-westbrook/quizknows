@@ -32,6 +32,7 @@ public class SListener implements Runnable
 			{
 				System.out.println("Listening for students on port " + port);
 				Socket socket = serverSocket.accept();
+				System.out.println("Student connected on port " + port);
 
 				BufferedReader inClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
@@ -55,7 +56,7 @@ public class SListener implements Runnable
 					if(!foundSession)
 					{
 						PrintWriter outClient = new PrintWriter(socket.getOutputStream(), true);
-						outClient.write("1" + "\n");
+						outClient.println("1");
 						outClient.close();
 						inClient.close();
 						socket.close();

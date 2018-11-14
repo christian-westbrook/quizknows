@@ -1,5 +1,10 @@
 package sclient.gui;
 
+import java.awt.Font;
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -62,20 +67,31 @@ public class QuizFrame extends JFrame
 
 		// Create swing objects
 		questionLabel 	= new JLabel("");
+		Font labelFont = questionLabel.getFont();
+		questionLabel.setFont(new Font(labelFont.getName(), Font.PLAIN, 20));
 		quizButton		= new JButton(inactiveIcon);
 		quizButton.addActionListener(new QuizButtonListener());
 
 		// Create JPanel
-		quizPanel		= new JPanel();
-		quizPanel.add(questionLabel);
-		quizPanel.add(quizButton);
+		quizPanel		= new JPanel(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+		c.gridx = 1;
+		c.gridy = 0;
+		quizPanel.add(questionLabel, c);
+
+		c.gridx = 1;
+		c.gridy = 1;
+		c.insets = new Insets(10,0,0,0);
+		quizPanel.add(quizButton, c);
 		this.add(quizPanel);
 
 		// Configure frame
 		this.setMinimumSize(new Dimension(frameWidth, frameHeight));
 		this.setMaximumSize(new Dimension(frameWidth, frameHeight));
 		this.setPreferredSize(new Dimension(frameWidth, frameHeight));
-		this.setLocationRelativeTo(null);
+		//this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("QuizKnows");

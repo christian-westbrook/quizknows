@@ -1,6 +1,10 @@
 package iclient.gui;
 
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
@@ -8,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.SwingConstants;
 
 public class CreateFrame extends JFrame
 {
@@ -30,23 +35,40 @@ public class CreateFrame extends JFrame
         createSessionButton.addActionListener(new ConnectButtonListener());
 
         // Create panel
-        createPanel         = new JPanel();
-        createPanel.add(sessionKeyLabel);
-        createPanel.add(sessionKeyField);
-        createPanel.add(createSessionButton);
-        this.add(createPanel);
+        createPanel         = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+        c.gridx = 1;
+        c.gridy = 0;
+        c.insets = new Insets(0,2,0,0);
+        createPanel.add(sessionKeyLabel, c);
+        c.insets = new Insets(0,0,0,0);
+
+        c.gridx = 1;
+        c.gridy = 1;
+        c.insets = new Insets(2,0,0,0);
+        createPanel.add(sessionKeyField, c);
+        c.insets = new Insets(0,0,0,0);
+
+        c.gridx = 1;
+        c.gridy = 2;
+        c.insets = new Insets(10,0,0,0);
+        createPanel.add(createSessionButton, c);
+        c.insets = new Insets(0,0,0,0);
+        this.add(createPanel, BorderLayout.CENTER);
 
         // Configure frame
 		this.setMinimumSize(new Dimension(frameWidth, frameHeight));
 		this.setMaximumSize(new Dimension(frameWidth, frameHeight));
 		this.setPreferredSize(new Dimension(frameWidth, frameHeight));
-		this.setLocationRelativeTo(null);
+		//this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("QuizKnows");
 
 		// Display frame
-		this.pack();
+		//this.pack();
 		this.setVisible(true);
     }
 
@@ -59,6 +81,7 @@ public class CreateFrame extends JFrame
 		public void actionPerformed(ActionEvent e)
 		{
 			new SessionFrame(sessionKeyField.getText());
+            CreateFrame.this.setVisible(false);
 		}
 	}
 }

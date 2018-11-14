@@ -1,9 +1,15 @@
 package iclient.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import iclient.network.Connection;
 
 public class SessionFrame extends JFrame
 {
@@ -63,6 +69,7 @@ public class SessionFrame extends JFrame
         sessionPanel.add(acceptAnswerButton);
         sessionPanel.add(rejectAnswerButton);
         sessionPanel.add(endSessionButton);
+        this.add(sessionPanel);
 
         // Configure frame
         this.setMinimumSize(new Dimension(frameWidth, frameHeight));

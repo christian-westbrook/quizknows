@@ -13,3 +13,14 @@ del server\Server.class
 del server\Session.class
 del server\SListener.class
 del server\StudentProcessor.class
+del iclient\Launcher.class
+del iclient\network\Connection.class
+del iclient\network\ConnectionListener.class
+del iclient\gui\CreateFrame.class
+del iclient\gui\SessionFrame.class
+del iclient\gui\CreateFrame$ConnectButtonListener.class
+del iclient\gui\SessionFrame$AcceptAnswerButtonListener.class
+del iclient\gui\SessionFrame$EndSessionButtonListener.class
+del iclient\gui\SessionFrame$NewQuestionButtonListener.class
+del iclient\gui\SessionFrame$RejectAnswerButtonListener.class
+cls

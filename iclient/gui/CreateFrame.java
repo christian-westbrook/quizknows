@@ -1,8 +1,13 @@
 package iclient.gui;
 
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
 
 public class CreateFrame extends JFrame
 {
@@ -11,7 +16,7 @@ public class CreateFrame extends JFrame
     private int frameHeight = 480;
 
     // Swing variables
-    private JLabel sessionkeyLabel;
+    private JLabel sessionKeyLabel;
     private JTextField sessionKeyField;
     private JButton createSessionButton;
     private JPanel createPanel;
@@ -28,6 +33,7 @@ public class CreateFrame extends JFrame
         createPanel.add(sessionKeyLabel);
         createPanel.add(sessionKeyField);
         createPanel.add(createSessionButton);
+        this.add(createPanel);
 
         // Configure frame
 		this.setMinimumSize(new Dimension(frameWidth, frameHeight));

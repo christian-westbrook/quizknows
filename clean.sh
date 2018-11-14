@@ -1,0 +1,26 @@
+rm sclient\Launcher.class
+rm sclient\gui\LogInFrame.class
+rm sclient\gui\LogInFrame$1.class
+rm sclient\gui\LogInFrame$ConnectButtonListener.class
+rm sclient\gui\QuizFrame.class
+rm sclient\gui\QuizFrame$1.class
+rm sclient\gui\QuizFrame$QuizButtonListener.class
+rm sclient\network\Connection.class
+rm sclient\network\ConnectionListener.class
+rm server\IListener.class
+rm server\InstructorProcessor.class
+rm server\Server.class
+rm server\Session.class
+rm server\SListener.class
+rm server\StudentProcessor.class
+rm iclient\Launcher.class
+rm iclient\network\Connection.class
+rm iclient\network\ConnectionListener.class
+rm iclient\gui\CreateFrame.class
+rm iclient\gui\SessionFrame.class
+rm iclient\gui\CreateFrame$ConnectButtonListener.class
+rm iclient\gui\SessionFrame$AcceptAnswerButtonListener.class
+rm iclient\gui\SessionFrame$EndSessionButtonListener.class
+rm iclient\gui\SessionFrame$NewQuestionButtonListener.class
+rm iclient\gui\SessionFrame$RejectAnswerButtonListener.class
+clear

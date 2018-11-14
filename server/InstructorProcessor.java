@@ -63,12 +63,12 @@ public class InstructorProcessor implements Runnable
 				{
 					active = false;
 					locked = false;
-					send("3");
+					send("3" + "\n");
 				}
 				// End session
 				else if(message[0].equals("4"))
 				{
-					send("6");
+					send("6" + "\n");
 					session.close();
 				}
 			}

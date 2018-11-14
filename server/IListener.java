@@ -34,6 +34,7 @@ public class IListener implements Runnable
 				try
 				{
 					Socket socket = serverSocket.accept();
+					System.out.println("Instructor connected on port " + port);
 					BufferedReader inClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
 					String input = inClient.readLine();

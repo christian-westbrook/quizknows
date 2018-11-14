@@ -11,7 +11,7 @@ public class Connection
     // Connection variables
     private Socket socket;
     private String IP = "code.cis.uafs.edu";
-    private int port = 4999;
+    private int port = 6500;
 
     // Session variables
     private SessionFrame frame;

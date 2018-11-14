@@ -12,7 +12,7 @@ public class Connection
 	// Connection variables
 	private Socket socket;
 	private String IP 	= "code.cis.uafs.edu";
-	private int port	= 5000;
+	private int port	= 6501;
 
 	// Session variables
 	private QuizFrame frame;

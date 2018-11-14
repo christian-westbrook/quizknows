@@ -9,8 +9,8 @@ public class Server
 	private ServerSocket studentSocket;
 	private ServerSocket instructorSocket;
 
-	private final int SPORT = 5000;
-	private final int IPORT = 4999;
+	private final int SPORT = 6501;
+	private final int IPORT = 6500;
 
 	private ArrayList<Session> sessions;
 

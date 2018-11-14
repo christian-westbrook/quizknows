@@ -31,6 +31,9 @@ public class LogInFrame extends JFrame
 
 	private JPanel 			loginPanel;
 
+	/**
+	 *	The constructor creates the frame and connects to a button listener.
+	 */
 	public LogInFrame()
 	{
 		// Create swing objects
@@ -70,8 +73,12 @@ public class LogInFrame extends JFrame
 		// Display frame
 		this.pack();
 		this.setVisible(true);
-	}
+		}
 
+	/**
+	 *	Listens for the connect button and then sends the input information
+	 *	to a new QuizFrame object.
+	 */
 	private class ConnectButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)

@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import sclient.network.Connection;
 
+/**
+ *	Swing GUI that allows a student to interact with an open QuizKnows session.
+ */
 public class QuizFrame extends JFrame
 {
 	// Width and height of the device

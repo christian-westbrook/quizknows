@@ -1,0 +1,15 @@
+del sclient\Launcher.class
+del sclient\gui\LogInFrame.class
+del sclient\gui\LogInFrame$1.class
+del sclient\gui\LogInFrame$ConnectButtonListener.class
+del sclient\gui\QuizFrame.class
+del sclient\gui\QuizFrame$1.class
+del sclient\gui\QuizFrame$QuizButtonListener.class
+del sclient\network\Connection.class
+del sclient\network\ConnectionListener.class
+del server\IListener.class
+del server\InstructorProcessor.class
+del server\Server.class
+del server\Session.class
+del server\SListener.class
+del server\StudentProcessor.class

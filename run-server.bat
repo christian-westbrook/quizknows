@@ -1,2 +1,2 @@
-javac server\Server.java
-java Server
+javac server/Server.java
+java server.Server

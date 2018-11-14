@@ -11,7 +11,7 @@ public class Connection
 {
 	// Connection variables
 	private Socket socket;
-	private String IP 	= "code.cis.uafs.edu";
+	private String IP 	= "127.0.0.1";
 	private int port	= 6501;
 
 	// Session variables

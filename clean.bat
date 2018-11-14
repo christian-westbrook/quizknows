@@ -23,4 +23,6 @@ del iclient\gui\SessionFrame$AcceptAnswerButtonListener.class
 del iclient\gui\SessionFrame$EndSessionButtonListener.class
 del iclient\gui\SessionFrame$NewQuestionButtonListener.class
 del iclient\gui\SessionFrame$RejectAnswerButtonListener.class
+del iclient\gui\CreateFrame$1.class
+del iclient\gui\SessionFrame$1.class
 cls

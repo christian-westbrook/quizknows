@@ -55,9 +55,13 @@ public class SessionFrame extends JFrame
         studentNameLabel    = new JLabel("");
 
         newQuestionButton   = new JButton("Activate New Question");
+        newQuestionButton.addActionListener(new NewQuestionButtonListener());
         acceptAnswerButton  = new JButton("Correct");
+        acceptAnswerButton.addActionListener(new AcceptAnswerButtonListener());
         rejectAnswerButton  = new JButton("Incorrect");
+        rejectAnswerButton.addActionListener(new RejectAnswerButtonListener());
         endSessionButton    = new JButton("End Session");
+        endSessionButton.addActionListener(new EndSessionButtonListener());
 
         // Create session panel
         sessionPanel = new JPanel();

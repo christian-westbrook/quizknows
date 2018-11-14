@@ -27,6 +27,7 @@ public class CreateFrame extends JFrame
         sessionKeyLabel     = new JLabel("Enter a Session Key");
         sessionKeyField     = new JTextField(10);
         createSessionButton = new JButton("Create Session");
+        createSessionButton.addActionListener(new ConnectButtonListener());
 
         // Create panel
         createPanel         = new JPanel();

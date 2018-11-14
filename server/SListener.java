@@ -30,6 +30,7 @@ public class SListener implements Runnable
 			boolean listening = true;
 			while(listening)
 			{
+				System.out.println("Listening for students on port " + port);
 				Socket socket = serverSocket.accept();
 
 				BufferedReader inClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));

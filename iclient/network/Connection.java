@@ -10,7 +10,7 @@ public class Connection
 {
     // Connection variables
     private Socket socket;
-    private String IP = "127.0.0.1";
+    private String IP = "74.117.171.114";
     private int port = 6500;
 
     // Session variables
@@ -30,7 +30,9 @@ public class Connection
         try
 		{
 			// Create socket connection
+            System.out.println("Before socket");
 			socket = new Socket(IP, port);
+            System.out.println("After socket");
 			listener = new ConnectionListener(frame, this, socket);
 			listener.start();
 

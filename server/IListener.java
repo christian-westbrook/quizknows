@@ -29,6 +29,8 @@ public class IListener implements Runnable
 			boolean listening = true;
 			while(listening)
 			{
+				System.out.println("Listening for instructors on port " + port);
+
 				try
 				{
 					Socket socket = serverSocket.accept();

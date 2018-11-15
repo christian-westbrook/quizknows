@@ -4,6 +4,7 @@ import java.net.Socket;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.io.IOException;
+import java.net.SocketException;
 
 public class StudentProcessor implements Runnable
 {
@@ -62,7 +63,7 @@ public class StudentProcessor implements Runnable
 			}
 			catch(IOException ex)
 			{
-				ex.printStackTrace();
+				//ex.printStackTrace();
 			}
 		}
 	}

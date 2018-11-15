@@ -10,7 +10,7 @@ public class Connection
 {
     // Connection variables
     private Socket socket;
-    private String IP = "10.183.240.165";
+    private String IP = "10.183.240.165"; //165
     private int port = 6500;
 
     // Session variables
@@ -18,6 +18,7 @@ public class Connection
     private ConnectionListener listener;
     private String sessionKey;
     private boolean locked;
+    String previous;
 
     // Server output
 	PrintWriter outServer;
@@ -28,6 +29,7 @@ public class Connection
         this.frame = frame;
         this.sessionKey = frame.getSessionKey();
         locked = false;
+        previous = "-1";
 
         try
 		{
@@ -72,6 +74,8 @@ public class Connection
 
     public void acceptAnswer()
     {
+        locked = false;
+        previous = "-1";
         outServer.println("3");
         frame.getStudentNameLabel().setText("");
     }
@@ -93,5 +97,15 @@ public class Connection
     public boolean getLocked()
     {
         return locked;
+    }
+
+    public String getPrevious()
+    {
+        return previous;
+    }
+
+    public void setPrevious(String previous)
+    {
+        this.previous = previous;
     }
 }

@@ -57,6 +57,7 @@ public class ConnectionListener implements Runnable
 						{
 							conn.lockAnswer();
 							frame.getStudentNameLabel().setText(student.getFname() + " " + student.getLname());
+							conn.setPrevious(message[1]);
 						}
 					}
                 }

@@ -11,7 +11,7 @@ public class Connection
 {
 	// Connection variables
 	private Socket socket;
-	private String IP 	= "127.0.0.1";
+	private String IP 	= "10.183.240.10";
 	private int port	= 6501;
 
 	// Session variables

@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import iclient.gui.SessionFrame;
+import iclient.data.Student;
 
 public class Connection
 {
@@ -19,6 +20,7 @@ public class Connection
     private String sessionKey;
     private boolean locked;
     String previous;
+    Student buzz;
 
     // Server output
 	PrintWriter outServer;
@@ -74,6 +76,20 @@ public class Connection
 
     public void acceptAnswer()
     {
+        // Increment score
+        String ID = buzz.getID();
+
+        for(int i = 0; i < frame.getModel().getRowCount(); i++)
+        {
+            if(frame.getModel().getValueAt(i, 0).equals(ID))
+            {
+                int score = Integer.parseInt((String) frame.getModel().getValueAt(i, 3));
+                score++;
+                String scoreStr = Integer.toString(score);
+                frame.getModel().setValueAt(scoreStr, i, 3);
+            }
+        }
+
         locked = false;
         previous = "-1";
         outServer.println("3");
@@ -107,5 +123,15 @@ public class Connection
     public void setPrevious(String previous)
     {
         this.previous = previous;
+    }
+
+    public Student getBuzz()
+    {
+        return buzz;
+    }
+
+    public void setBuzz(Student buzz)
+    {
+        this.buzz = buzz;
     }
 }

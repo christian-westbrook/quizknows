@@ -47,6 +47,8 @@ public class ConnectionListener implements Runnable
 					System.out.println(message[2] + " " + message[3] + " connected!");
 					Student student = new Student(message[1], message[2], message[3], message[4]);
 					frame.getStudents().add(student);
+					String[] row = {message[4], message[2] + " " + message[3], message[1], "0"};
+					frame.getModel().addRow(row);
 				}
                 // Student buzzing in
                 if(message[0].equals("1") && !conn.getLocked())
@@ -58,6 +60,7 @@ public class ConnectionListener implements Runnable
 							conn.lockAnswer();
 							frame.getStudentNameLabel().setText(student.getFname() + " " + student.getLname());
 							conn.setPrevious(message[1]);
+							conn.setBuzz(student);
 						}
 					}
                 }

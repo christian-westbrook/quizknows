@@ -7,6 +7,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Dimension;
+import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -14,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import iclient.data.Student;
 import iclient.network.Connection;
 
@@ -29,7 +31,9 @@ public class SessionFrame extends JFrame
     private JLabel questionLabel;
     private JTextField questionField;
 
+    private DefaultTableModel connectedModel;
     private JTable connectedTable;
+    private JScrollPane connectedPane;
     private JLabel studentLabel;
     private JLabel studentNameLabel;
 
@@ -71,6 +75,13 @@ public class SessionFrame extends JFrame
         endSessionButton    = new JButton("End Session");
         endSessionButton.addActionListener(new EndSessionButtonListener());
 
+        // TODO
+        String[] columns = {"ID", "Name", "Email", "Score"};
+        connectedModel = new DefaultTableModel(columns, 0);
+        connectedTable = new JTable(connectedModel);
+        connectedTable.setPreferredScrollableViewportSize(new Dimension(4, 250));
+        connectedPane = new JScrollPane(connectedTable);
+
         // Create session panel
         sessionPanel = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -78,46 +89,57 @@ public class SessionFrame extends JFrame
 
         c.gridx = 1;
         c.gridy = 0;
-        sessionPanel.add(questionLabel, c);
-
-        c.gridx = 2;
-        c.gridy = 0;
-        sessionPanel.add(questionField, c);
+        sessionPanel.add(keyLabel, c);
 
         c.gridx = 1;
         c.gridy = 1;
+        sessionPanel.add(questionLabel, c);
+
+        c.gridx = 2;
+        c.gridy = 1;
+        sessionPanel.add(questionField, c);
+
+        c.gridx = 1;
+        c.gridy = 2;
         c.insets = new Insets(2,0,0,0);
         sessionPanel.add(studentLabel, c);
         c.insets = new Insets(0,0,0,0);
 
         c.gridx = 2;
-        c.gridy = 1;
+        c.gridy = 2;
         c.insets = new Insets(2,0,0,0);
         sessionPanel.add(studentNameLabel, c);
         c.insets = new Insets(0,0,0,0);
 
         c.gridx = 1;
-        c.gridy = 2;
+        c.gridy = 3;
         c.insets = new Insets(4,0,0,0);
         sessionPanel.add(newQuestionButton, c);
         c.insets = new Insets(0,0,0,0);
 
         c.gridx = 2;
-        c.gridy = 2;
+        c.gridy = 3;
         c.insets = new Insets(4,0,0,0);
         sessionPanel.add(acceptAnswerButton, c);
         c.insets = new Insets(0,0,0,0);
 
         c.gridx = 3;
-        c.gridy = 2;
+        c.gridy = 3;
         c.insets = new Insets(4,0,0,0);
         sessionPanel.add(rejectAnswerButton, c);
         c.insets = new Insets(0,0,0,0);
 
         c.gridx = 4;
-        c.gridy = 2;
+        c.gridy = 3;
         c.insets = new Insets(4,0,0,0);
         sessionPanel.add(endSessionButton, c);
+        c.insets = new Insets(0,0,0,0);
+
+        c.gridx = 1;
+        c.gridy = 4;
+        c.gridwidth = 4;
+        c.insets = new Insets(10,0,0,0);
+        sessionPanel.add(connectedPane, c);
         c.insets = new Insets(0,0,0,0);
 
         this.add(sessionPanel, BorderLayout.CENTER);
@@ -154,6 +176,11 @@ public class SessionFrame extends JFrame
     public ArrayList<Student> getStudents()
     {
         return students;
+    }
+
+    public DefaultTableModel getModel()
+    {
+        return connectedModel;
     }
 
     // Inner classes
